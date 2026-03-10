@@ -1,0 +1,284 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Black & White Wireframe Theme */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 100%;
+    --radius: 0.25rem;
+    
+    /* Custom MANSORY Variables */
+    --nav-height: 80px;
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  /* MANSORY Logo Style */
+  .mansory-logo {
+    @apply text-2xl tracking-[0.3em] font-light;
+    letter-spacing: 0.25em;
+  }
+  
+  .mansory-logo::before,
+  .mansory-logo::after {
+    content: '';
+    @apply inline-block w-8 h-[1px] bg-white/60 align-middle mx-3;
+  }
+  
+  /* Navigation Link Hover Effect */
+  .nav-link {
+    @apply relative text-xs tracking-widest uppercase text-white/80 transition-colors duration-300;
+  }
+  
+  .nav-link:hover {
+    @apply text-white;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  /* Hero Slide */
+  .hero-slide {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-1000;
+  }
+  
+  .hero-slide.active {
+    @apply opacity-100;
+  }
+  
+  /* Section Title */
+  .section-title {
+    @apply text-3xl md:text-4xl font-light tracking-wide uppercase;
+  }
+  
+  /* Card Tags */
+  .card-tag {
+    @apply px-3 py-1 text-[10px] tracking-widest uppercase border border-white/30 bg-black/50 backdrop-blur-sm;
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    @apply px-8 py-3 bg-white/10 border border-white/30 text-xs tracking-widest uppercase transition-all duration-300;
+  }
+  
+  .btn-primary:hover {
+    @apply bg-white/20 border-white/50;
+  }
+  
+  .btn-outline {
+    @apply px-8 py-3 border border-white/30 text-xs tracking-widest uppercase transition-all duration-300;
+  }
+  
+  .btn-outline:hover {
+    @apply bg-white/10 border-white/50;
+  }
+  
+  /* Carousel Arrow */
+  .carousel-arrow {
+    @apply w-12 h-12 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 cursor-pointer;
+  }
+  
+  .carousel-arrow:hover {
+    @apply bg-white/10 border-white/50;
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    @apply absolute top-full left-0 mt-2 py-2 bg-black/90 backdrop-blur-md border border-white/10 min-w-[160px] opacity-0 invisible transition-all duration-300;
+  }
+  
+  .dropdown-trigger:hover .dropdown-menu {
+    @apply opacity-100 visible;
+  }
+  
+  .dropdown-item {
+    @apply px-4 py-2 text-xs tracking-widest uppercase text-white/70 hover:text-white hover:bg-white/5 transition-colors duration-200 cursor-pointer;
+  }
+  
+  /* Slider Dots */
+  .slider-dot {
+    @apply w-8 h-[2px] bg-white/30 transition-all duration-300 cursor-pointer;
+  }
+  
+  .slider-dot.active {
+    @apply bg-white;
+  }
+  
+  /* Image Overlay */
+  .image-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent;
+  }
+  
+  /* News Card */
+  .news-card {
+    @apply relative overflow-hidden group cursor-pointer;
+  }
+  
+  .news-card img {
+    @apply transition-transform duration-700;
+  }
+  
+  .news-card:hover img {
+    @apply scale-105;
+  }
+  
+  /* Split Section */
+  .split-section {
+    @apply relative h-[500px] overflow-hidden;
+  }
+  
+  .split-section::before {
+    content: '';
+    @apply absolute inset-0 bg-black/50 transition-all duration-500;
+  }
+  
+  .split-section:hover::before {
+    @apply bg-black/30;
+  }
+  
+  /* Instagram Feed */
+  .insta-item {
+    @apply relative aspect-square overflow-hidden;
+  }
+  
+  .insta-item img {
+    @apply transition-transform duration-500;
+  }
+  
+  .insta-item:hover img {
+    @apply scale-110;
+  }
+  
+  /* Scroll Reveal Animation */
+  .reveal {
+    @apply opacity-0 translate-y-8 transition-all duration-700;
+  }
+  
+  .reveal.visible {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+@layer utilities {
+  /* Custom Scrollbar */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Text Stroke for Wireframe */
+  .text-stroke {
+    -webkit-text-stroke: 1px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s var(--transition-slow) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s var(--transition-smooth) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s var(--transition-smooth) forwards;
+}
