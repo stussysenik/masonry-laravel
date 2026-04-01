@@ -1,5 +1,8 @@
 # MANSORY Laravel
 
+![Demo](demo.gif)
+
+
 Laravel rebuild of the MANSORY website draft, implemented as a full end-to-end product with:
 
 - Laravel 12 backend
